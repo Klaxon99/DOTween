@@ -2,14 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class ColorChanger : MonoBehaviour
+public class ColorChanger : DOTweenAnimator
 {
     [SerializeField] private Color _color;
     [SerializeField] private Image _image;
-    [SerializeField] private float _duration;
 
-    private void Start()
+    protected override Tween MakeAnimation()
     {
-        _image.DOColor(_color, _duration);
+        return _image.DOColor(_color, Duration);
     }
 }

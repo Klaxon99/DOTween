@@ -1,13 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Rotator : MonoBehaviour
+public class Rotator : DOTweenAnimator
 {
-    [SerializeField] private float _duration;
     [SerializeField] private Vector3 _rotation;
 
-    private void Start()
+    protected override Tween MakeAnimation()
     {
-        transform.DORotate(_rotation, _duration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        return transform.DORotate(_rotation, Duration).SetEase(Ease.Linear);
     }
 }

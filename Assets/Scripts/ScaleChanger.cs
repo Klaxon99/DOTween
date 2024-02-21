@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 
-public class ScaleChanger : MonoBehaviour
+public class ScaleChanger : DOTweenAnimator
 {
-    [SerializeField] private float _duration;
     [SerializeField] private float _scale;
 
-    private void Start()
+    protected override Tween MakeAnimation()
     {
-        transform.DOScale(new Vector3(_scale, _scale, _scale), _duration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        return transform.DOScale(new Vector3(_scale, _scale, _scale), Duration).SetEase(Ease.Linear);
     }
 }

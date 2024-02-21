@@ -1,13 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class Mover : DOTweenAnimator
 {
-    [SerializeField] private float _duration;
     [SerializeField] private Vector3 _targetPosition;
 
-    private void Start()
+    protected override Tween MakeAnimation()
     {
-        transform.DOMove(_targetPosition, _duration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        return transform.DOMove(_targetPosition, Duration).SetEase(Ease.Linear);
     }
 }
